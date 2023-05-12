@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- METADATA -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="PICTURE-PREVIEW">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- METADATA -->
+
+  <title>Sympho-niche</title>
+
+  <link rel=icon href="FAVICON-DARK" media="(prefers-color-scheme: light)" type="image/png">
+
+  <link rel=icon href="FAVICON-LIGHT" media="(prefers-color-scheme: dark)" type="image/png">
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- GOOGLE FONTS -->
+
+  <!-- FONT AWESOME -->
+  <script src="https://kit.fontawesome.com/ad98de5722.js" crossorigin="anonymous"></script>
+  <!-- FONT AWESOME -->
+
+  <!-- CUSTOM STYLESHEETS -->
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <!-- CUSTOM STYLESHEETS -->
+</head>
+
+<body>
+  <section id="navbar">
+    <div class="container">
+      <div class="flex-container">
+        <div class="flex-item">
+          <div>
+            <a href="/"><img class="logo" src="/images/logo.png" alt=""></a>
+            <a href="/">
+              <p class="navbar-text">Sympho-niche</p>
+            </a>
+          </div>
+        </div>
+        <div class="flex-item">
+          <div>
+            <ul>
+              <li>
+                <a href="/add">
+                  <p class="navbar-text" data-state="active">Add</p>
+                </a>
+              </li>
+              <li>
+                <a href="/view">
+                  <p class="navbar-text">View</p>
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  <p class="navbar-text">About</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <form method="POST" action="/post-test">
+    <section id="form">
+      <div class="container">
+        <div class="grid-container">
+          <p class="section-title">
+            Add Data To Database
+          </p>
+          <div class="grid-item">
+            <label for="name">Song name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="artist">Artist name:</label><br>
+            <input type="text" id="artist" name="artist"><br>
+            <label for="album">Album Title:</label><br>
+            <input type="text" id="album" name="album"><br>
+          </div>
+          <div class="grid-item">
+            <input class="button-dark" type="submit" value="Submit">
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>
+
+  <section id="footer">
+    <div class="container">
+      <div class="grid-container">
+        <p>Sympho-niche © 2023</p>
+      </div>
+    </div>
+  </section>
+
+</body>
