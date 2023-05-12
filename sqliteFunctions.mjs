@@ -113,18 +113,20 @@ async function insertArtist(artist) {
   })
 }
 
-export async function addData(name, album, artist) {
+export async function addData(title, album, artist) {
   try {
     let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE);
 
     let row = await new Promise((resolve, reject) => {
       db.get(`
-        SELECT *
+        SELECT artists.Name, albums.Title, tracks.Name
         FROM albums
         JOIN artists USING (ArtistId)
         JOIN tracks USING (AlbumId)
-        WHERE tracks.Name = ?
-      `, [name], (err, row) => {
+        WHERE Artists.Name = ?
+          AND albums.Title = ?
+          And tracks.Name = ?
+      `, [artist, album, title], (err, row) => {
         if (err) {
           console.error(err);
           reject(err);
@@ -134,22 +136,12 @@ export async function addData(name, album, artist) {
     });
 
     if (row) {
-      await new Promise((resolve, reject) => {
-        db.run(`
-          INSERT INTO tracks (Name) VALUES (?)
-        `, [name], (err) => {
-          if (err) {
-            console.error(err);
-            reject(err);
-          }
-          resolve();
-        });
-      });
+      console.log("There is already an existing data of the inputted values");
 
     } else {
       await insertArtist(artist);
       await insertAlbum(album, artist);
-      await insertSong(name, album);
+      await insertSong(title, album);
       console.log("Insertion Complete!");
     }
 
@@ -165,3 +157,6 @@ export async function addData(name, album, artist) {
     console.error(err.message);
   }
 }
+
+
+// SELECT * FROM albums JOIN artists USING (ArtistId) JOIN tracks USING (AlbumId) WHERE tracks.Name = ?

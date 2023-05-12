@@ -1,7 +1,7 @@
 // SETUP
 import * as dotenv from "dotenv";
 import express from "express";
-import {createTable, addData} from "./sqliteFunctions.mjs";
+import {addData} from "./sqliteFunctions.mjs";
 
 dotenv.config();
 
