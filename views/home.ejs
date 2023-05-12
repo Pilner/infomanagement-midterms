@@ -12,7 +12,7 @@
   <meta property="og:image:height" content="630">
   <!-- METADATA -->
 
-  <title>Symphoniche</title>
+  <title>Sympho-niche</title>
 
   <link rel=icon href="FAVICON-DARK" media="(prefers-color-scheme: light)" type="image/png">
 
@@ -34,64 +34,23 @@
 
 <body>
   <!-- HTML code here -->
-  <section id="navbar">
-    <div class="container">
-      <div class="flex-container">
-        <div class="flex-item">
+  <%- include("partials/navbar", {page: 0}) %>
+
+    <section id="hero">
+      <div class="container">
+        <div class="grid-container">
           <div>
-            <a href="/"><img class="logo" src="/images/logo.png" alt=""></a>
-            <a href="/">
-              <p class="navbar-text">Sympho-niche</p>
-            </a>
-          </div>
-        </div>
-        <div class="flex-item">
-          <div>
-            <ul>
-              <li>
-                <a href="/add">
-                  <p class="navbar-text">Add</p>
-                </a>
-              </li>
-              <li>
-                <a href="/view">
-                  <p class="navbar-text">View</p>
-                </a>
-              </li>
-              <li>
-                <a href="/about">
-                  <p class="navbar-text">About</p>
-                </a>
-              </li>
-            </ul>
+            <img class="heropic" src="/images/logo.png" alt="">
+            <p class="hero-title">Sympho-niche</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="hero">
-    <div class="container">
-      <div class="grid-container">
-        <div>
-          <img class="heropic" src="/images/logo.png" alt="">
-          <p class="hero-title">Sympho-niche</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <%- include("partials/footer.ejs") %>
 
-
-  <section id="footer">
-    <div class="container">
-      <div class="grid-container">
-        <p>Sympho-niche © 2023</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCRIPTS -->
-  <script src="https://kit.fontawesome.com/ad98de5722.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="/javascripts/script.js"></script>
-  <!-- SCRIPTS -->
+      <!-- SCRIPTS -->
+      <script src="https://kit.fontawesome.com/ad98de5722.js" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="/javascripts/script.js"></script>
+      <!-- SCRIPTS -->
 </body>

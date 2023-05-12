@@ -1,7 +1,7 @@
 // SETUP
 import * as dotenv from "dotenv";
 import express from "express";
-import {addData} from "./sqliteFunctions.mjs";
+import {addData, allData} from "./sqliteFunctions.mjs";
 
 dotenv.config();
 
@@ -25,16 +25,17 @@ app.get("/", (req, res) => {
 
 app.get("/add", (req, res) => {
   try {
-    res.render("addpage")
+    res.render("addpage");
   } catch (err) {
     res.render("errorpage");
     console.error(err);
   }
 });
 
-app.get("/view", (req, res) => {
+app.get("/view", async (req, res) => {
   try {
-    res.render("viewpage")
+    const rows = await allData();
+    res.render("viewpage", {rows: rows});
   } catch (err) {
     res.render("errorpage");
     console.error(err);
@@ -43,7 +44,7 @@ app.get("/view", (req, res) => {
 
 app.get("/about", (req, res) => {
   try {
-    res.render("aboutpage")
+    res.render("aboutpage");
   } catch (err) {
     res.render("errorpage");
     console.error(err);
@@ -55,9 +56,10 @@ app.get("*", (req, res) => {
 });
 
 
-app.post("/post-test", (req, res) => {
+app.post("/post-test", async (req, res) => {
   console.log('Got body: ', req.body);
-  addData(req.body.name, req.body.album, req.body.artist);
+  await addData(req.body.name, req.body.album, req.body.artist);
+  res.redirect("/view")
 });
 
 

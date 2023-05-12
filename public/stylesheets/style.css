@@ -112,6 +112,14 @@ ul {
   font-weight: bold;
 }
 
+.section-title2 {
+  text-align: center;
+  width: 100%;
+  padding: 1em 0;
+  font-size: 3.5em;
+  font-weight: bold;
+}
+
 /* GENERAL */
 
 
@@ -119,6 +127,7 @@ ul {
 #navbar {
   height: 10vh;
   position: relative;
+  border-bottom: 1px solid black;
 }
 
 #navbar img {
@@ -215,11 +224,35 @@ ul {
   /* width: 100%; */
 }
 
+#view {}
+
+#view table {
+  margin: 2em 0;
+  text-align: center;
+  border-collapse: collapse;
+  text-overflow: ellipsis;
+  table-layout: fixed;
+  width: 100%;
+}
+
+#view thead th {
+  height: 2em;
+  border: 2px solid black;
+}
+
+#view td {
+  height: 2em;
+  border: 1px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
 
 
 /* FOOTER */
 #footer {
   height: 2.5em;
+  border-top: 1px solid rgba(0, 0, 0, .5);
 }
 
 #footer .grid-container {

@@ -158,5 +158,36 @@ export async function addData(title, album, artist) {
   }
 }
 
-
 // SELECT * FROM albums JOIN artists USING (ArtistId) JOIN tracks USING (AlbumId) WHERE tracks.Name = ?
+
+
+export async function allData() {
+
+  return new Promise((resolve, reject) => {
+
+    let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE);
+
+    db.all(`
+        SELECT artistId, artists.Name as Artist, albums.Title as Album, tracks.Name as Song
+        FROM albums
+        JOIN artists USING (ArtistId)
+        JOIN tracks USING (AlbumId)
+    `, (err, rows) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+        res.status(500).send("500 Internal Server Error");
+      } else {
+        db.close((err) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            console.log("Add Data Done!");
+            resolve(rows);
+          }
+        });
+      }
+    })
+
+  })
+}

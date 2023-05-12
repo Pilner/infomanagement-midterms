@@ -33,31 +33,47 @@
 </head>
 
 <body>
-  <%- include("partials/navbar", {page: 1}) %>
+  <!-- HTML code here -->
+  <%- include("partials/navbar", {page: 2}) %>
 
-    <form method="POST" action="/post-test">
-      <section id="form">
-        <div class="container">
-          <div class="grid-container">
-            <p class="section-title">
-              Add Data To Database
-            </p>
-            <div class="grid-item">
-              <label for="name">Song name:</label><br>
-              <input type="text" id="name" name="name" required><br>
-              <label for="artist">Artist name:</label><br>
-              <input type="text" id="artist" name="artist" required><br>
-              <label for="album">Album Title:</label><br>
-              <input type="text" id="album" name="album" required><br>
-            </div>
-            <div class="grid-item">
-              <input class="button-dark" type="submit" value="Submit">
-            </div>
-          </div>
-        </div>
-      </section>
-    </form>
+    <section id="view">
+      <div class="container">
+        <p class="section-title2">
+          View All Data On The Database
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Song</th>
+              <th>Artist</th>
+              <th>Album</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% rows.forEach((row)=> { %>
+              <tr>
+                <td>
+                  <%= row.Song %>
+                </td>
+                <td>
+                  <%= row.Artist %>
+                </td>
+                <td>
+                  <%= row.Album %>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
 
     <%- include("partials/footer.ejs") %>
 
+      <!-- SCRIPTS -->
+      <script src="https://kit.fontawesome.com/ad98de5722.js" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="/javascripts/script.js"></script>
+      <!-- SCRIPTS -->
 </body>
