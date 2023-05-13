@@ -39,24 +39,28 @@
     <section id="view">
       <div class="container">
         <p class="section-title2">
-          View All Data On The Database
+          View All Data Of The Database
         </p>
         <table>
           <thead>
             <tr>
-              <th>Song</th>
+              <th class="first-column">#</th>
               <th>Artist</th>
+              <th>Song</th>
               <th>Album</th>
             </tr>
           </thead>
           <tbody>
-            <% rows.forEach((row)=> { %>
+            <% rows.forEach((row, index)=> { %>
               <tr>
-                <td>
-                  <%= row.Song %>
+                <td class="first-column">
+                  <%= index+1 %>
                 </td>
                 <td>
                   <%= row.Artist %>
+                </td>
+                <td>
+                  <%= row.Song %>
                 </td>
                 <td>
                   <%= row.Album %>
