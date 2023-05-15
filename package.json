@@ -1,15 +1,17 @@
 {
-  "name": "website-boilerplate",
+  "name": "Sympho-niche",
   "version": "1.0.0",
-  "description": "A website boilerplate for Railey's designs",
+  "description": "Front-End Data Collector Website for SQLITE",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
     "prod-start": "NODE_ENV=production node ./app.js"
   },
   "keywords": [
+    "Sympho-niche",
     "Website",
-    "Boilerplate",
+    "Music Database",
+    "SQLite",
     "Node.js",
     "Express",
     "EJS"
