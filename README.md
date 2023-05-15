@@ -1,48 +1,60 @@
-# Railey's Personal Website Boilerplate
+# Sympho-niche
 
-A custom website boilerplate to start coding a website/app instantly.
+The Midterm Project of COMP 20093 Information Management written in the SQLite-Express-NodeJS Web Stack.
 
 ## How to use
 
 *Note: Make sure you have a [Node.js](https://nodejs.org/en/) installed. To check, run `node -v` in your terminal*
 
-1. Click `Use this template` or clone into a local directory
+1. First clone this git repository to your local device
 ```
-git clone https://github.com/Pilner/Website-Boilerplate
+git clone https://github.com/Pilner/infomanagement-midterms.git
 ```
 2. Download all the dependencies and packages needed in this repository
 ```
 npm install
 ```
-3. After cloning, add this into the `.gitignore` file
-```
-.env
-```
-4. Run the program
+3. Run the program
 ```
 npm start
 ```
 
-## Styles
+## Routes
 
-* Container __Class__ - A container that wraps around content in a specified width.
-* Buttons __Class__ - A styled button that changes color when hovered.
-* Hero and Body Texts __Class__ - Font designs for the Hero section and the general texts.
+* `/` is the Home Page
+* `/add` is the Add Page
+* `/view` is the View Page
+* `/about` is the About Page
+* Anything else is an error page
 
-## Technique
-
-Make a general section and then inside of it add a child element with the class `container`.
-
-```
-<section>
-	<div class="container">
-		<!-- CONTENT -->
-
-	<div>
-<section>
-```
+## Collaborators
+- Isaiah Job Enriquez
+- Jarlson Ezekiel Figueroa
+- Anthonette Macapañas
+- Alyssa Ramos
+- Renz Rey Sario
+- Fabian Railey A. Victuelles
 
 
-## Copyright
+## Licenses
+MIT License
 
-This code is copyrighted by Fabian Railey A. Victuelles.
+Copyright (c) 2023 Enriquez, Figueroa, Macapañas, Ramos, Sario, Victuelles
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
