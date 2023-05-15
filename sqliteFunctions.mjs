@@ -6,7 +6,7 @@ async function insertArtist(artist) {
     // Create a new Promise for data to return asynchronously
     return new Promise((resolve, reject) => {
       // Open the database with READ/WRITE access
-      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE, (err) => {
+      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
           reject(err);
         }
@@ -46,7 +46,7 @@ function insertAlbum(album, artist) {
     return new Promise((resolve, reject) => {
 
       // Open the database with READ/WRITE access
-      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE, (err) => {
+      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
           reject(err);
         }
@@ -96,7 +96,7 @@ function insertSong(song, name) {
   try {
 
     return new Promise((resolve, reject) => {
-      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE, (err) => {
+      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
           reject(err);
         }
@@ -147,7 +147,7 @@ function insertSong(song, name) {
 export async function addData(title, album, artist) {
   try {
     // Open the database with READ/WRITE access
-    let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE);
+    let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READWRITE);
 
     // Create a new Promise for data to return asynchronously
     let row = await new Promise((resolve, reject) => {
@@ -201,7 +201,7 @@ export async function allData() {
     return new Promise((resolve, reject) => {
 
       // Open the database with READ access
-      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READ);
+      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READ);
 
       // Query the needed information
       db.all(`
@@ -239,7 +239,7 @@ export async function allData() {
 export async function searchData(item) {
   try {
     return new Promise((resolve, reject) => {
-      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READ);
+      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READ);
 
       db.all(`
         SELECT artistId, artists.Name as Artist, albums.Title as Album, tracks.Name as Song
