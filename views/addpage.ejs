@@ -33,11 +33,11 @@
 </head>
 
 <body>
-  <%- include("partials/navbar", {page: 1}) %>
+  <%- include("partials/navbar", {page: "add" }) %>
 
-    <form method="POST" action="/post-test">
-      <section id="form">
-        <div class="container">
+    <section id="form">
+      <div class="container">
+        <form method="POST" action="/post-test">
           <div class="grid-container">
             <p class="section-title">
               Add Data To Database
@@ -54,9 +54,9 @@
               <input class="button-dark" type="submit" value="Submit">
             </div>
           </div>
-        </div>
-      </section>
-    </form>
+        </form>
+      </div>
+    </section>
 
     <%- include("partials/footer.ejs") %>
 

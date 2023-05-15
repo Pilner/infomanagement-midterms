@@ -12,11 +12,9 @@
         <div class="flex-item">
           <div>
             <ul>
-              <% if (page == 1) { %>
+              <% if (page == "add") { %>
                 <li>
-                  <a href="/add">
-                    <p class="navbar-text" data-state="active">Add</p>
-                  </a>
+                  <p class="navbar-text" data-state="active">Add</p>
                 </li>
                 <li>
                   <a href="/view">
@@ -30,16 +28,14 @@
                 </li>
                 
 
-              <% } else if (page == 2) { %>
+              <% } else if (page == "views") { %>
                 <li>
                   <a href="/add">
                     <p class="navbar-text">Add</p>
                   </a>
                 </li>
                 <li>
-                  <a href="/view">
-                    <p class="navbar-text" data-state="active">View</p>
-                  </a>
+                  <p class="navbar-text" data-state="active">View</p>
                 </li>
                 <li>
                   <a href="/about">
@@ -48,7 +44,7 @@
                 </li>
                 
 
-              <% } else if (page == 3) { %>
+              <% } else if (page == "about") { %>
                 <li>
                   <a href="/add">
                     <p class="navbar-text">Add</p>
@@ -60,9 +56,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="/about">
-                    <p class="navbar-text" data-state="active">About</p>
-                  </a>
+                  <p class="navbar-text" data-state="active">About</p>
                 </li>
                 
 

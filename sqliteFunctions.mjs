@@ -12,7 +12,7 @@ async function insertArtist(artist) {
         }
         // Run the Insertion Query
         db.run(`
-        INSERT INTO artists(Name) VALUES ?
+        INSERT INTO artists(Name) VALUES (?)
       `, [artist], (err) => {
           if (err) {
             reject(err)
@@ -32,7 +32,7 @@ async function insertArtist(artist) {
         })
       });
     })
-  } catch {
+  } catch (err) {
     console.error(err.message);
   }
 }
@@ -86,7 +86,7 @@ function insertAlbum(album, artist) {
         })
       });
     })
-  } catch {
+  } catch (err) {
     console.error(err.message);
   }
 }
@@ -104,7 +104,7 @@ function insertSong(song, name) {
         db.get(`
         SELECT *
         FROM albums
-        WHERE Title = ?
+        WHERE Title = (?)
       `, [name], (err, row) => {
           if (err) {
             reject(err);
@@ -138,7 +138,7 @@ function insertSong(song, name) {
         })
       });
     })
-  } catch {
+  } catch (err) {
     console.error(err.message);
   }
 }
@@ -157,9 +157,9 @@ export async function addData(title, album, artist) {
         FROM albums
         JOIN artists USING (ArtistId)
         JOIN tracks USING (AlbumId)
-        WHERE Artists.Name = ?
+        WHERE artists.Name = ?
           AND albums.Title = ?
-          And tracks.Name = ?
+          AND tracks.Name = ?
       `, [artist, album, title], (err, row) => {
         if (err) {
           reject(err);
@@ -172,7 +172,6 @@ export async function addData(title, album, artist) {
     // If row exists, output then exit
     if (row) {
       console.log("There is already an existing data of the inputted values");
-
     } else { // else run these insertion functions
       await insertArtist(artist);
       await insertAlbum(album, artist);
@@ -183,14 +182,13 @@ export async function addData(title, album, artist) {
     // If no problems, then close the database
     db.close((err) => {
       if (err) {
-        reject(err)
+        console.error(err.message);
       } else {
         console.log("Add Data Done!");
       }
     });
-
   } catch (err) { // If there are any errors, catch those and output
-    console.error(err.message);
+    console.error(err);
   }
 }
 
@@ -211,7 +209,7 @@ export async function allData() {
         FROM albums
         JOIN artists USING (ArtistId)
         JOIN tracks USING (AlbumId)
-        ORDER BY ArtistId
+        ORDER BY ArtistId ASC, AlbumId ASC, Song ASC
     `, (err, rows) => {
         // If there are errors in the querying process
         if (err) {
@@ -236,3 +234,40 @@ export async function allData() {
 
 
 // SELECT * FROM albums JOIN artists USING (ArtistId) JOIN tracks USING (AlbumId) WHERE tracks.Name = ?
+
+
+export async function searchData(item) {
+  try {
+    return new Promise((resolve, reject) => {
+      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READ);
+
+      db.all(`
+        SELECT artistId, artists.Name as Artist, albums.Title as Album, tracks.Name as Song
+        FROM albums
+        JOIN artists USING (ArtistId)
+        JOIN tracks USING (AlbumId)
+        WHERE  Artist LIKE ?
+            OR Album LIKE ?
+            OR Song LIKE ?
+        ORDER BY ArtistId
+      `, [`%${item}%`, `%${item}%`, `%${item}%`], (err, rows) => {
+        if (err) {
+          res.status(500).send("500 Internal Server Error");
+          reject(err);
+        } else {
+          db.close((err) => {
+            // If there are errors in the closing process
+            if (err) {
+              reject(err);
+            } else {
+              resolve(rows);
+            }
+          });
+        }
+      })
+    })
+  } catch {
+    console.error(err);
+  }
+
+}

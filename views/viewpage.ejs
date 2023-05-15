@@ -34,13 +34,23 @@
 
 <body>
   <!-- HTML code here -->
-  <%- include("partials/navbar", {page: 2}) %>
+  <%- include("partials/navbar", {page: "views" }) %>
 
     <section id="view">
       <div class="container">
-        <p class="section-title2">
-          View All Data Of The Database
-        </p>
+        <div class="header">
+          <p class="section-title2">
+            View All Data Of The Database
+          </p>
+          <form method="GET" action="/view">
+            <% if (placeholder) { %>
+              <input type="text" name="search" id="search" placeholder="Search" value="<%= placeholder %>">
+              <% } else { %>
+                <input type="text" name="search" id="search" placeholder="Search">
+                <% } %>
+                  <input class="button-dark" type="submit" name="submit" value="Search">
+          </form>
+        </div>
         <table>
           <thead>
             <tr>

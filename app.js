@@ -1,7 +1,7 @@
 // SETUP
 import * as dotenv from "dotenv";
 import express from "express";
-import {addData, allData} from "./sqliteFunctions.mjs";
+import {addData, allData, searchData} from "./sqliteFunctions.mjs";
 
 dotenv.config();
 
@@ -34,8 +34,15 @@ app.get("/add", (req, res) => {
 
 app.get("/view", async (req, res) => {
   try {
-    const rows = await allData();
-    res.render("viewpage", {rows: rows});
+    let searchItem = req.query.search;
+    if (searchItem) {
+      const rows = await searchData(req.query.search);
+      res.render("viewpage", {rows: rows, placeholder: searchItem});
+    } else {
+      const rows = await allData();
+      res.render("viewpage", {rows: rows, placeholder: searchItem});
+    }
+
   } catch (err) {
     res.render("errorpage");
     console.error(err);
