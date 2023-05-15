@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- METADATA -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content="PICTURE-PREVIEW">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- METADATA -->
+
+  <title>Sympho-niche</title>
+
+  <link rel=icon href="FAVICON-DARK" media="(prefers-color-scheme: light)" type="image/png">
+
+  <link rel=icon href="FAVICON-LIGHT" media="(prefers-color-scheme: dark)" type="image/png">
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- GOOGLE FONTS -->
+
+  <!-- FONT AWESOME -->
+  <script src="https://kit.fontawesome.com/ad98de5722.js" crossorigin="anonymous"></script>
+  <!-- FONT AWESOME -->
+
+  <!-- CUSTOM STYLESHEETS -->
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <!-- CUSTOM STYLESHEETS -->
+</head>
+
+<body>
+  <!-- HTML code here -->
+  <%- include("partials/navbar", {page: "about" }) %>
+
+    <section id="about">
+      <div class="container">
+        <p class="section-title3">About This Page</p>
+        <div class="about-content">
+          <p class="hero-text">
+            Sympho-niche is a user-friendly website created by Group 4 of BSCS 2–5 from the Polytechnic University of
+            the
+            Philippines. It has a wide variety of music from all around the world. It features an organized database
+            that enables you to easily browse music using title, artist, album, and/or genre.
+          </p>
+          <p class="hero-text">
+            Furthermore, it offers
+            the website has a collection of information about music from around the world. It has an
+            organized database that allows you to easily browse for music with its title, artist, album, and genre.
+            It offers an add-to-database feature for easy storage of your music collection.
+          </p>
+          <p class="hero-text">
+            Start exploring today and discover more songs!
+          </p>
+        </div>
+        <p class="section-title3">Contributors</p>
+        <div class="grid-container">
+          <div class="grid-item">
+            <img src="/images/contributors/job.jpg" alt="" />
+            <p><b>Isaiah Job Enriquez</b></p>
+          </div>
+          <div class="grid-item">
+            <img src="/images/contributors/jarlson.jpg" alt="" />
+            <p><b>Jarlson Ezekiel Figueroa</b></p>
+          </div>
+          <div class="grid-item">
+            <img src="/images/contributors/anthonette.jpg" alt="" />
+            <p><b>Anthonette Macapañas</b></p>
+          </div>
+          <div class="grid-item">
+            <img src="/images/contributors/alyssa.jpg" alt="" />
+            <p><b>Alyssa Ramos</b></p>
+          </div>
+          <div class="grid-item">
+            <img src="/images/contributors/renz.jpg" alt="" />
+            <p><b>Renz Rey Sario</b></p>
+          </div>
+          <div class="grid-item">
+            <img src="/images/contributors/railey.jpg" alt="" />
+            <p><b>Fabian Railey Victuelles</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include("partials/footer.ejs") %>
+
+      <!-- SCRIPTS -->
+      <script src="https://kit.fontawesome.com/ad98de5722.js" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="/javascripts/script.js"></script>
+      <!-- SCRIPTS -->
+</body>
