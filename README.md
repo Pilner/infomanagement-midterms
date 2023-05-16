@@ -19,6 +19,10 @@ npm install
 ```
 npm start
 ```
+4. View the website on browser at
+```
+localhost:3000
+```
 
 ## Routes
 
