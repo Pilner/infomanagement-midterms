@@ -9,6 +9,7 @@ The Midterm Project of COMP 20093 Information Management written in the SQLite-E
 1. First clone this git repository to your local device
 ```
 git clone https://github.com/Pilner/infomanagement-midterms.git
+cd infomanagement-midterms
 ```
 2. Download all the dependencies and packages needed in this repository
 ```
