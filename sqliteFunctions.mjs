@@ -6,7 +6,7 @@ async function insertArtist(artist) {
     // Create a new Promise for data to return asynchronously
     return new Promise((resolve, reject) => {
       // Open the database with READ/WRITE access
-      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READWRITE, (err) => {
+      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
           reject(err);
         }
@@ -46,7 +46,7 @@ function insertAlbum(album, artist) {
     return new Promise((resolve, reject) => {
 
       // Open the database with READ/WRITE access
-      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READWRITE, (err) => {
+      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
           reject(err);
         }
@@ -92,11 +92,11 @@ function insertAlbum(album, artist) {
 }
 
 
-function insertSong(song, name) {
+function insertSong(song, name, composer, milliseconds, unitprice) {
   try {
 
     return new Promise((resolve, reject) => {
-      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READWRITE, (err) => {
+      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
           reject(err);
         }
@@ -112,14 +112,18 @@ function insertSong(song, name) {
             if (row) {
               albumId = row.AlbumId;
             }
+            if (!milliseconds) {
+              milliseconds = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
+            }
+            if (!unitprice) {
+              unitprice = Math.floor(Math.random() * (5.99 - 0.99 + 1)) + 0.99;
+            }
 
             let randMTI = Math.floor(Math.random() * 5) + 1;
-            let randMS = Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000;
-            let randUP = Math.floor(Math.random() * (5.99 - 0.99 + 1)) + 0.99;
             db.run(`
-            INSERT INTO tracks(Name, AlbumId, MediaTypeId, Milliseconds, UnitPrice)
-            VALUES (?, ?, ?, ?, ?)
-          `, [song, albumId, randMTI, randMS, randUP], (err) => {
+            INSERT INTO tracks(Name, AlbumId, MediaTypeId, Composer, Milliseconds, UnitPrice)
+            VALUES (?, ?, ?, ?, ?, ?)
+          `, [song, albumId, randMTI, composer, milliseconds, unitprice], (err) => {
               if (err) {
                 reject(err);
               } else {
@@ -144,10 +148,10 @@ function insertSong(song, name) {
 }
 
 
-export async function addData(title, album, artist) {
+export async function addData(title, album, artist, composer, milliseconds, unitprice) {
   try {
     // Open the database with READ/WRITE access
-    let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READWRITE);
+    let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READWRITE);
 
     // Create a new Promise for data to return asynchronously
     let row = await new Promise((resolve, reject) => {
@@ -175,7 +179,7 @@ export async function addData(title, album, artist) {
     } else { // else run these insertion functions
       await insertArtist(artist);
       await insertAlbum(album, artist);
-      await insertSong(title, album);
+      await insertSong(title, album, composer, milliseconds, unitprice);
       console.log("Insertion Complete!");
     }
 
@@ -201,11 +205,11 @@ export async function allData() {
     return new Promise((resolve, reject) => {
 
       // Open the database with READ access
-      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READ);
+      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READ);
 
       // Query the needed information
       db.all(`
-        SELECT artistId, artists.Name as Artist, albums.Title as Album, tracks.Name as Song
+        SELECT ArtistId, artists.Name as Artist, albums.Title as Album, tracks.Name as Song, tracks.Composer, tracks.Milliseconds, tracks.UnitPrice
         FROM albums
         JOIN artists USING (ArtistId)
         JOIN tracks USING (AlbumId)
@@ -239,10 +243,10 @@ export async function allData() {
 export async function searchData(item) {
   try {
     return new Promise((resolve, reject) => {
-      let db = new sqlite3.Database("./db/chinook.db", sqlite3.OPEN_READ);
+      let db = new sqlite3.Database("./db/1chinook.db", sqlite3.OPEN_READ);
 
       db.all(`
-        SELECT artistId, artists.Name as Artist, albums.Title as Album, tracks.Name as Song
+        SELECT ArtistId, artists.Name as Artist, albums.Title as Album, tracks.Name as Song, tracks.Composer, tracks.Milliseconds, tracks.UnitPrice
         FROM albums
         JOIN artists USING (ArtistId)
         JOIN tracks USING (AlbumId)

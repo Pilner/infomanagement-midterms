@@ -291,9 +291,9 @@ ul {
   border-right: 2px solid black;
 }
 
-#view .first-column {
-  width: 2.75em;
-}
+/* #view .first-column { */
+/*   width: 10%; */
+/* } */
 
 #about {
   min-height: 86vh;

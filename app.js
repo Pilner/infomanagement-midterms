@@ -65,7 +65,7 @@ app.get("*", (req, res) => {
 
 app.post("/post-test", async (req, res) => {
   console.log('Got body: ', req.body);
-  await addData(req.body.name, req.body.album, req.body.artist);
+  await addData(req.body.name, req.body.album, req.body.artist, req.body.composer, req.body.time, req.body.price);
   res.redirect("/view")
 });
 

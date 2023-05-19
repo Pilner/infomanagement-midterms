@@ -54,29 +54,48 @@
         <table>
           <thead>
             <tr>
-              <th class="first-column">#</th>
+              <th style="width:calc(30% / 7)">#</th>
               <th>Artist</th>
               <th>Song</th>
               <th>Album</th>
+              <th>Composer</th>
+              <th style="width:calc(60% / 7)">Milliseconds</th>
+              <th style="width:calc(30% / 7)">Unit Price</th>
             </tr>
           </thead>
           <tbody>
-            <% rows.forEach((row, index)=> { %>
+            <% if (rows.length===0) { %>
               <tr>
-                <td class="first-column">
-                  <%= index+1 %>
-                </td>
-                <td>
-                  <%= row.Artist %>
-                </td>
-                <td>
-                  <%= row.Song %>
-                </td>
-                <td>
-                  <%= row.Album %>
-                </td>
+                <td colspan="7">No data found</td>
               </tr>
-              <% }) %>
+              <% } else { %>
+
+                <% rows.forEach((row, index)=> { %>
+                  <tr>
+                    <td style="width:calc(30% / 7)">
+                      <%= index+1 %>
+                    </td>
+                    <td>
+                      <%= row.Artist %>
+                    </td>
+                    <td>
+                      <%= row.Song %>
+                    </td>
+                    <td>
+                      <%= row.Album %>
+                    </td>
+                    <td>
+                      <%= row.Composer %>
+                    </td>
+                    <td style="width:calc(60% / 7)">
+                      <%= row.Milliseconds %>
+                    </td>
+                    <td style="width:calc(30% / 7)">
+                      <%= row.UnitPrice %>
+                    </td>
+                  </tr>
+                  <% }) %>
+                    <% } %>
           </tbody>
         </table>
       </div>
