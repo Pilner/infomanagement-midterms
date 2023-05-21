@@ -146,19 +146,19 @@ ul {
 /* NAVBAR */
 #navbar {
   height: 10vh;
-  position: relative;
+  /* position: relative; */
   border-bottom: 1px solid black;
 }
 
-#navbar img {
-  height: 10vh;
+#navbar .logo {
+  height: 50px;
   /* aspect-ratio: 1; */
 }
 
 #navbar .flex-container {
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  /* height: 100%; */
+  height: 100%;
 }
 
 #navbar .flex-container .flex-item {
@@ -210,11 +210,16 @@ ul {
 #hero .grid-container {
   justify-content: center;
   align-items: center;
+  height: 85vh;
+}
+
+#hero .grid-container>div {
+  /* padding: 5em 0; */
+  text-align: center;
 }
 
 #hero .heropic {
-  /* width: 50%; */
-  /* margin: auto; */
+  width: 50%;
 }
 
 /* FORM */
