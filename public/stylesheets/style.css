@@ -152,6 +152,7 @@ ul {
 
 #navbar .logo {
   height: 50px;
+  padding-right: 1em;
   /* aspect-ratio: 1; */
 }
 
